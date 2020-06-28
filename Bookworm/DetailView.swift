@@ -56,7 +56,7 @@ struct DetailView: View {
     
     func delectRecord() {
         moc.delete(book)
-        //try? moc.save()
+        try? moc.save()
         presentation.wrappedValue.dismiss()
     }
 }
