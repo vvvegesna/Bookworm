@@ -26,8 +26,16 @@ struct RatingsView: View {
                     .onTapGesture {
                         self.rating = number
                 }
+                .accessibility(label: number == 1 ? Text( "1 Star") : Text("\(number) Stars"))
+                .accessibility(removeTraits: .isImage)
+                .accessibility(addTraits: self.isRatingLessthanNumber(number) ? .isButton : [.isButton, .isSelected])
+
             }
         }
+    }
+    
+    func isRatingLessthanNumber(_ number: Int) -> Bool {
+        self.rating < number
     }
     
     func image(for number: Int) -> Image {
